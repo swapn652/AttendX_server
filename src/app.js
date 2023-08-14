@@ -8,6 +8,14 @@ const cors = require('cors');
 const fileUpload = require('express-fileupload')
 
 app.use(cors());
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://attend-x-client.vercel.app');
+  // You can set other CORS headers here if needed
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
+
 
 app.use(fileUpload({
     useTempFiles: true
